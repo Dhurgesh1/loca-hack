@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather by Location</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Weather by Exact Location</h1>
+    <div class="card">
+      <div class="actions">
+        <button id="saveLocationBtn">Get Weather Details</button>
+      </div>
+      <div id="status" class="status"></div>
+      <div id="weather" class="weather hidden">
+        <div class="weather-header">
+          <div>
+            <h2 id="city">City</h2>
+            <p id="coords">Lat, Lon</p>
+          </div>
+          <div class="temperature">
+            <span id="temperature">0°</span>
+            <img id="icon" alt="Weather icon" src="" />
+          </div>
+        </div>
+        <div class="weather-details">
+          <p><strong>Description:</strong> <span id="description"></span></p>
+          <p><strong>Humidity:</strong> <span id="humidity"></span></p>
+          <p><strong>Wind:</strong> <span id="wind"></span></p>
+          <p><strong>Saved:</strong> <span id="savedAt"></span></p>
+        </div>
+      </div>
+    </div>
+    
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
