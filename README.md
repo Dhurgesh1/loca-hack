@@ -61,10 +61,11 @@ const weatherApiKey = 'YOUR_OPENWEATHER_API_KEY';
 
 3. Save `script.js`.
 
-## Step 5: Run the project locally
+## Step 5: Run the project 
 
 1. Open `index.html` in your browser.
    - You can double-click the file or use a simple static server.
+2. If you want to use it on someone, deploy the files to **Netlify** and share the link. 
 2. Click **Save Current Location**.
 3. Allow location access when prompted.
 
