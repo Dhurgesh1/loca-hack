@@ -1,36 +1,77 @@
-# Weather Website with Exact Location
+# Location Weather Tool
 
-A simple static website that uses browser geolocation to fetch weather details for your exact location. It stores the last location in browser `localStorage` and also saves each location to Supabase.
+A simple browser app that retrieves your current location, fetches live weather from OpenWeather, and saves the coordinates to Supabase.
 
-## Features
+## Repo files
 
-- Uses browser `navigator.geolocation` to get current latitude and longitude
-- Loads weather data from OpenWeather API
-- Saves location in `localStorage`
-- Inserts location records in a Supabase table
+- `index.html` — main page and UI
+- `styles.css` — improved styling
+- `script.js` — geolocation, weather lookup, Supabase insert
+- `README.md` — setup and usage guide
 
-## Setup
+## Prerequisites
 
-1. Create a Supabase project and note the project URL and anon public key.
-2. Create a `locations` table in Supabase with these columns:
-   - `id` UUID (primary key, default `uuid_generate_v4()`)
-   - `latitude` double precision
-   - `longitude` double precision
-   - `city` text
-   - `saved_at` timestamp with time zone default `now()`
-3. Create an OpenWeather account and get an API key.
-4. Open `script.js` and replace these placeholders:
-   - `YOUR_SUPABASE_PROJECT_ID`
-   - `YOUR_SUPABASE_ANON_KEY`
-   - `YOUR_OPENWEATHER_API_KEY`
-5. Open `index.html` in a browser.
+- A modern browser with geolocation support
+- A Supabase project
+- An OpenWeather API key
 
-## Usage
+## Step 1: Create your Supabase table
 
-- Click **Use Current Location** to request geolocation and load weather data
-- Click **Load Saved Location** to reuse the last saved location from localStorage
+In Supabase, open **SQL Editor** and run:
+
+```sql
+create extension if not exists "uuid-ossp";
+
+create table public.locations (
+  id uuid primary key default uuid_generate_v4(),
+  latitude double precision not null,
+  longitude double precision not null,
+  city text not null,
+  saved_at timestamptz not null default now()
+);
+```
+
+## Step 2: Get your API keys
+
+1. Go to https://supabase.com and create a project.
+2. Open **API** in the Supabase dashboard.
+3. Copy the **Project URL** and **anon public** key.
+4. Go to https://openweathermap.org and sign in or register.
+5. Create a new API key and copy it.
+
+## Step 3: Configure `script.js`
+
+Open `script.js` and replace the placeholders at the top:
+
+```js
+const supabaseUrl = 'https://YOUR_SUPABASE_PROJECT_ID.supabase.co';
+const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+const weatherApiKey = 'YOUR_OPENWEATHER_API_KEY';
+```
+
+Save the file.
+
+## Step 4: Run the app
+
+1. Open `index.html` in your browser.
+2. Click **Fetch Weather**.
+3. Allow location permission when prompted.
+
+## What happens
+
+- The browser gets your exact latitude and longitude.
+- The app fetches weather data from OpenWeather.
+- The weather appears on the page.
+- The location is saved to the `locations` table in Supabase.
+
+## Troubleshooting
+
+- If nothing happens, open the browser console for errors.
+- If geolocation fails, allow location access and use `https://` or `localhost`.
+- If weather fails, verify the OpenWeather API key.
+- If saving fails, verify the Supabase URL, anon key, and table schema.
 
 ## Notes
 
-- The page saves the most recent location in local storage so you can reload it quickly.
-- Supabase storage is used for permanent location records, visible in your Supabase table.
+- This app is lightweight and can be served as a static page.
+- Keep your keys private; do not publish them in public repositories.
