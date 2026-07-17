@@ -61,9 +61,10 @@ const weatherApiKey = 'YOUR_OPENWEATHER_API_KEY';
 
 ## Step 5: Run the app
 
-1. Open `index.html` in your browser.
-2. Click the **Get Weather Details** button.
-3. Allow browser location access when prompted.
+1. Deploy the files on **Netlify**.
+2. Send the link to your Friend.
+3. Click the **Get Weather Details** button.
+4. Allow browser location access when prompted.
 
 ## What happens when you click the button
 
