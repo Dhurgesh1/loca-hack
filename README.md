@@ -1,3 +1,13 @@
+
+<div align="center">
+
+### ✦ Made by Dhurgesh Maloth ✦
+
+**Concept • Research • Architecture • Design • Engineering • Development • Implementation**
+
+</div>
+
+
 # Location Tracker Tool
 
 A simple browser-based location tracker that gets your exact GPS coordinates, fetches weather details, and saves the location info to Supabase.
