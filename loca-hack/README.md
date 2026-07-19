@@ -1,4 +1,4 @@
-# Location Weather Tool
+# Location tracking Tool
 
 A simple browser app that retrieves your current location, fetches live weather from OpenWeather, and saves the coordinates to Supabase.
 
